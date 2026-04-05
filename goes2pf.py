@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 import logging
 import os
+import sys
 import time
 
 import requests
 from osgeo import gdal
+
 
 logger = logging.getLogger("goes2pf")
 logging.basicConfig(
@@ -16,6 +18,10 @@ logging.basicConfig(
 
 path = os.path.split(__file__)[0]
 os.chdir(path)
+
+
+if sys.platform.startswith('win'):
+    os.putenv("PROJ_LIB", os.path.join(path, "proj"))
 
 GEOS19_URL="https://cdn.star.nesdis.noaa.gov/GOES19/ABI/CONUS/GEOCOLOR/GOES19-ABI-CONUS-GEOCOLOR-5000x3000.tif"
 GEOS19_HASH="https://cdn.star.nesdis.noaa.gov/GOES19/ABI/CONUS/GEOCOLOR/GOES19-ABI-CONUS-GEOCOLOR-5000x3000.tif.sha256"
