@@ -49,12 +49,14 @@ jobs:
       run: |
         cd ${{ github.workspace }}/source
         pyinstaller goes2pf.spec
-        echo $PROJ_LIB
 
     - name: Copy Files to Output
       shell: pwsh
       run: |
         cd ${{ github.workspace }}/source
+
+        $projDbPath = python find_proj.py
+        Copy-Item -Path $projDbPath -Destination "dist/goes2pf/_internal/proj" -Recurse -Force
 
         Copy-Item README.md dist/goes2pf/
         Copy-Item ACKNOWLEDGMENTS.md dist/goes2pf/
