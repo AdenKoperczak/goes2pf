@@ -14,11 +14,11 @@ jobs:
     runs-on: windows-2022
 
     steps:
-    - name: Checkout goes2pf
-      uses: actions/checkout@v4
+    - name: Setup Conda
+      uses: conda-incubator/setup-miniconda@v3
       with:
-        path: ${{ github.workspace }}/source
-        submodules: recursive
+        auto-update-conda: true
+        python-version: "3.11"
 
     - name: Setup MSVC
       uses: ilammy/msvc-dev-cmd@v1
@@ -26,11 +26,16 @@ jobs:
         arch: x64
         vsversion: 2022
 
+    - name: Checkout goes2pf
+      uses: actions/checkout@v4
+      with:
+        path: ${{ github.workspace }}/source
+        submodules: recursive
 
-    - name: Install GDAL vcpkg
+    - name: Install GDAL
       shell: pwsh
       run: |
-        vcpkg install gdal
+        conda install -c gdal-master -c conda-forge gdal-master::gdal
 
     - name: Install pyinstaller and requirements.txt
       shell: pwsh
