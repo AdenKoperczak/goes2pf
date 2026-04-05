@@ -1,0 +1,53 @@
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "**"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+
+    name: Windows Build
+    runs-on: windows-2022
+
+    - name: Checkout goes2pf
+      uses: actions/checkout@v4
+      with:
+        path: ${{ github.workspace }}/source
+        submodules: recursive
+
+    #- name: Setup MSVC
+    #  uses: ilammy/msvc-dev-cmd@v1
+    #  with:
+    #    arch: x64
+    #    vsversion: 2022
+
+    - name: Install pyinstaller and requirements.txt
+      shell: pwsh
+      run: |
+        cd ${{ github.workspace }}/source
+        pip install pyinstaller
+        pip install -r requirements.txt
+
+    - name: Make Executables
+      shell: pwsh
+      run: |
+        cd ${{ github.workspace }}/source
+        pyinstaller goes2pf.spec
+
+    - name: Copy Files to Output
+      shell: pwsh
+      run: |
+        cd ${{ github.workspace }}/source
+
+        Copy-Item README.md dist/goes2pf/
+        Copy-Item ACKNOWLEDGMENTS.md dist/goes2pf/
+
+    - name: Upload goes2pf Executable
+      uses: actions/upload-artifact@v4
+      with:
+        name: goes2pf
+        path: ${{ github.workspace }}/source/dist
