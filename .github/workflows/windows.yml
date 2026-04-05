@@ -54,7 +54,6 @@ jobs:
       shell: pwsh
       run: |
         cd ${{ github.workspace }}/source
-        ls dist
 
         Copy-Item README.md dist/goes2pf/
         Copy-Item ACKNOWLEDGMENTS.md dist/goes2pf/

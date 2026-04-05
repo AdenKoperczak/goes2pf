@@ -58,3 +58,14 @@ goes2pf_exe = EXE(
     #    "icon\\icon512.ico"
     #    ],
 )
+
+coll = COLLECT(
+    geos2pf_exe,
+    geos2pf_a.binaries,
+    geos2pf_a.datas,
+    geos2pf_ui_exe,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='geos2pf',
+)
