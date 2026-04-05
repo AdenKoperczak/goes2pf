@@ -63,7 +63,6 @@ coll = COLLECT(
     goes2pf_exe,
     goes2pf_a.binaries,
     goes2pf_a.datas,
-    goes2pf_ui_exe,
     strip=False,
     upx=True,
     upx_exclude=[],
