@@ -36,6 +36,7 @@ jobs:
       shell: pwsh
       run: |
         conda install -c gdal-master -c conda-forge gdal-master::gdal
+        tree
 
     - name: Install pyinstaller and requirements.txt
       shell: pwsh
