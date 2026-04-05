@@ -19,5 +19,5 @@ python3 goes2pf.py
 
 ## Adding To Supercell WX
 When run a black box will appear and text will appere in that box. Copy the path
-from that box as shown below, and past it into the Supercell WX placefile 
+from that box, and past it into the Supercell WX placefile 
 manager.
