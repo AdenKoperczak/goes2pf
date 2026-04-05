@@ -6,7 +6,6 @@ on:
       - "**"
 
 jobs:
-
   build:
     strategy:
       fail-fast: false
@@ -14,6 +13,7 @@ jobs:
     name: Windows Build
     runs-on: windows-2022
 
+    steps:
     - name: Checkout goes2pf
       uses: actions/checkout@v4
       with:
