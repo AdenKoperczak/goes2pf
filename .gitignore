@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Custom
+geocolor-*
+goes_geocolor.txt
+GOES19-ABI-CONUS-GEOCOLOR-5000x3000.tif
