@@ -60,12 +60,12 @@ goes2pf_exe = EXE(
 )
 
 coll = COLLECT(
-    geos2pf_exe,
-    geos2pf_a.binaries,
-    geos2pf_a.datas,
-    geos2pf_ui_exe,
+    goes2pf_exe,
+    goes2pf_a.binaries,
+    goes2pf_a.datas,
+    goes2pf_ui_exe,
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='geos2pf',
+    name='goes2pf',
 )
