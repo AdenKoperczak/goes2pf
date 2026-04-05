@@ -26,6 +26,12 @@ jobs:
         arch: x64
         vsversion: 2022
 
+
+    - name: Install GDAL vcpkg
+      shell: pwsh
+      run: |
+        vcpkg install gdal
+
     - name: Install pyinstaller and requirements.txt
       shell: pwsh
       run: |
